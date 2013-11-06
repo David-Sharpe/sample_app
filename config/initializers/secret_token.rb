@@ -9,7 +9,7 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-require 'secure_token'
+require 'securerandom'
 
 def secure_token
   token_file = Rails.root.join('.secret')
@@ -17,7 +17,7 @@ def secure_token
     File.read(token_file).chomp
   else
     token = SecureRandom.hex(64)
-    Fie.write(token_file, token)
+    File.write(token_file, token)
     token
   end
 end
